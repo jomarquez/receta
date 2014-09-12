@@ -27,7 +27,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'bower-rails'
 gem 'angular-rails-templates'
 
-group :test, :development do
+group :local_development, :development, :test do
   gem "rspec"
   gem "rspec-rails", "~> 2.0"
   gem "factory_girl_rails", "~> 4.0"
