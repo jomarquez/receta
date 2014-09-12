@@ -25,6 +25,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 
 gem 'bower-rails'
+gem 'angular-rails-templates'
 
 group :test, :development do
   gem "rspec"
