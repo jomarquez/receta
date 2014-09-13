@@ -34,6 +34,8 @@ group :local_development, :development, :test do
   gem "capybara"
   gem "database_cleaner"
   gem "selenium-webdriver"
+  gem 'teaspoon'
+  gem 'phantomjs'
 end
 
 group :doc do
