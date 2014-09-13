@@ -1,6 +1,6 @@
 var controllers, receta, recipes;
 
-receta = angular.module('receta', ['templates', 'ngRoute', 'controllers']);
+receta = angular.module('receta', ['templates', 'ngRoute', 'ngResource', 'controllers']);
 
 receta.config([
   '$routeProvider', function($routeProvider) {
@@ -30,7 +30,7 @@ recipes = [
 controllers = angular.module('controllers', []);
 
 controllers.controller("RecipesController", [
-  '$scope', '$routeParams', '$location', function($scope, $routeParams, $location) {
+  '$scope', '$routeParams', '$location', '$resource', function($scope, $routeParams, $location, $resource) {
     var keywords;
     $scope.search = function(keywords) {
       return $location.path("/").search('keywords', keywords);
