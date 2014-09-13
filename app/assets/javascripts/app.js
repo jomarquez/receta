@@ -35,10 +35,18 @@ controllers.controller("RecipesController", [
     $scope.search = function(keywords) {
       return $location.path("/").search('keywords', keywords);
     };
+
+    var Recipe;
+    Recipe = $resource('/recipes/:recipeId', {
+      recipeId: "@id",
+      format: 'json'
+    });
+
     if ($routeParams.keywords) {
-      keywords = $routeParams.keywords.toLowerCase();
-      return $scope.recipes = recipes.filter(function(recipe) {
-        return recipe.name.toLowerCase().indexOf(keywords) !== -1;
+      Recipe.query({
+        keywords: $routeParams.keywords
+      }, function(results) {
+        return $scope.recipes = results;
       });
     } else {
       return $scope.recipes = [];
