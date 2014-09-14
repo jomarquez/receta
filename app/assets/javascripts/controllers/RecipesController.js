@@ -4,17 +4,14 @@ controllers = angular.module('controllers');
 
 controllers.controller("RecipesController", [
   '$scope', '$routeParams', '$location', '$resource', function($scope, $routeParams, $location, $resource) {
-    var keywords;
+    var Recipe;
     $scope.search = function(keywords) {
       return $location.path("/").search('keywords', keywords);
     };
-
-    var Recipe;
     Recipe = $resource('/recipes/:recipeId', {
       recipeId: "@id",
       format: 'json'
     });
-
     if ($routeParams.keywords) {
       Recipe.query({
         keywords: $routeParams.keywords
@@ -22,11 +19,17 @@ controllers.controller("RecipesController", [
         return $scope.recipes = results;
       });
     } else {
-      return $scope.recipes = [];
+      $scope.recipes = [];
     }
-
     $scope.view = function(recipeId) {
       return $location.path("/recipes/" + recipeId);
     };
+    $scope.newRecipe = function() {
+      return $location.path("/recipes/new");
+    };
+    return $scope.edit = function(recipeId) {
+      return $location.path("/recipes/" + recipeId + "/edit");
+    };
   }
 ]);
+RunLink
