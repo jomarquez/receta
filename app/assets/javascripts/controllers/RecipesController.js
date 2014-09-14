@@ -24,5 +24,9 @@ controllers.controller("RecipesController", [
     } else {
       return $scope.recipes = [];
     }
+
+    $scope.view = function(recipeId) {
+      return $location.path("/recipes/" + recipeId);
+    };
   }
 ]);
