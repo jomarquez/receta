@@ -4,7 +4,11 @@ receta = angular.module('receta', ['templates', 'ngRoute', 'ngResource',
   'controllers', 'angular-flash.service', 'angular-flash.flash-alert-directive']);
 
 receta.config([
-  '$routeProvider', function($routeProvider) {
+  '$routeProvider', 'flashProvider', function($routeProvider, flashProvider) {
+    flashProvider.errorClassnames.push("alert-danger");
+    flashProvider.warnClassnames.push("alert-warning");
+    flashProvider.infoClassnames.push("alert-info");
+    flashProvider.successClassnames.push("alert-success");
     return $routeProvider.when('/', {
       templateUrl: "index.html",
       controller: 'RecipesController'
